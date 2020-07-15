@@ -1,154 +1,230 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-*{
-  box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
 #root {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .App {
-  display: grid;
-  grid-template-columns: 360px auto;
-  width: 100%;
-  height: 100%;
-  background-color: #13121F;
+    display: grid;
+    grid-template-columns: 376px auto;
+    width: 100%;
+    height: 100%;
+    background-color: #13121F;
 }
 
 .Sidebar {
-  height: 100vh;
-  padding: 24px;
-  background-color: #1A1926;
-  box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 
-              0px 2px 5px rgba(19, 18, 30, 0.5), 
-              0px 0px 1px rgba(19, 18, 30, 0.75);
+    height: 100vh;
+    padding: 24px;
+    background-color: #1A1926;
+    box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75);
+    overflow-y: scroll;
 }
 
 .SidebarSection {
-  margin-bottom: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.logo div {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: .8;
+    padding-top: 4px;
 }
 
 .heading {
-  display: block;
-  font-family: Inter;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #B8B7C7;
-  padding-bottom: 24px;
-  width: 100%;
+    display: block;
+    font-family: Inter;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    opacity: .5;
+    padding-bottom: 16px;
+    width: 100%;
 }
 
 .quarter {
-  width: calc(25% - 4px);
+    width: calc(25% - 4px);
 }
 
 .half {
-  width: calc(50% - 4px);
+    width: calc(50% - 4px);
 }
 
 .three-quarter {
-  width: calc(75% - 4px);
+    width: calc(75% - 4px);
 }
 
 .full {
-  width: 100%;
+    width: 100%;
 }
 
-select, input {
-  margin-bottom: 16px;
+select,
+input {
+    margin-bottom: 16px;
 }
 
 label {
-  display: block;
-  font-weight: 500;
-  font-size: 16px;
-  padding-bottom: 8px;
-  color: #DBDAE6;
-  width: 100%;
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 8px;
+    color: #DBDAE6;
+    width: 100%;
 }
 
 .select-div {
-  position: relative;
+    position: relative;
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  display: block;
-  width: 100%;
-  height: 40px;
-  padding: 0 8px;
-  font-size: 16px;
-  color: white;
-  background-color: #343347;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 
-              0px 2px 5px rgba(19, 18, 30, 0.5), 
-              0px 0px 1px rgba(19, 18, 30, 0.75);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 16px;
+    color: white;
+    background-color: #343347;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75);
 }
 
 select~svg {
-  position: absolute;
-  right: 8px;
-  top: 40px;
+    position: absolute;
+    right: 8px;
+    top: 38px;
 }
 
 .input-div {
-  position: relative;
+    position: relative;
 }
 
 input {
-  width: 100%;
-  height: 40px;
-  padding: 0 8px;
-  font-size: 16px;
-  color: white;
-  background-color: #343347;
-  border: none;
-  border-radius: 4px;
+    width: 100%;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 16px;
+    color: white;
+    background-color: #343347;
+    border: none;
+    border-radius: 4px;
 }
 
 input::placeholder {
-  color: #B8B7C7;
+    color: #B8B7C7;
 }
 
 select:focus {
-  outline: none;
+    outline: none;
 }
 
 input:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px #6256E9;
-  transition: all 100ms ease-out;
+    outline: none;
+    box-shadow: 0 0 0 1px #6256E9;
+    transition: all 100ms ease-out;
 }
 
 input~.unit {
-  position: absolute;
-  right: 8px;
-  top: 38px;
-  color: white;
-  opacity: 40%;
+    position: absolute;
+    right: 8px;
+    top: 35px;
+    color: white;
+    opacity: 40%;
+}
+
+.attribution {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+}
+
+.attribution:hover {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button {
+    padding-left: 16px;
+    padding-right: 44px;
+    height: 40px;
+    background-color: #6256E9;
+    box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75);
+    outline: none;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 100ms ease-out;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+}
+
+button span {
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, .25);
+    padding: 4px 2px 2px 2px;
+    border-radius: 4px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 8px;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .Pane {
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
 }
 
 .Element {
-  width: 200px;
-  height: 200px;
-  background-color: #6256E9;
-  border-radius: 8px;
-  box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 
-              0px 2px 5px rgba(19, 18, 30, 0.5), 
-              0px 0px 1px rgba(19, 18, 30, 0.75);
+    width: 200px;
+    height: 200px;
+    background-color: #6256E9;
+    box-shadow: 0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75);
+    background-size: 100% 100%;
+    will-change: auto;
+}
+
+.modal {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
 }
