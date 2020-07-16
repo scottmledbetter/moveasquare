@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./app.css";
+import "./App.css";
 import Input from "./components/Input";
 import Select from "./components/Select";
 import Button from "./components/Button";
@@ -24,27 +24,7 @@ class App extends Component {
       opacityEnd: "100",
       acceleration: "cubic-bezier(.645, .045, .355, 1)",
       speed: "500",
-      elementMarkup: "",
-      keyframes: "",
     };
-
-    this.elementStyle = {
-      transition: `all ${this.state.speed}ms ${this.state.acceleration}`,
-      transformOrigin: `${this.state.scalingOrigin}`,
-      width: this.state.scalingStartWidth + "px",
-      height: this.state.scalingStartHeight + "px",
-      opacity: this.state.opacityStart + "%",
-      backgroundColor: '#6256E9',
-      boxShadow: '0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75)',
-      willChange: 'auto',
-    }
-
-    this.animation = {
-      duration: parseInt(this.state.speed, 10),
-      easing: this.state.acceleration,
-      iterations: 1,
-      fill: 'forwards',
-    }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleDirectionSelect = this.handleDirectionSelect.bind(this);
@@ -56,16 +36,7 @@ class App extends Component {
   handleInput(value, name) {
     this.setState({
       [name]: value,
-      elementMarkup: document.querySelector('.Element').outerHTML,
     });
-    document.querySelector('.modal').innerHTML =
-      `
-      <pre>
-        <code>
-          <div>${this.state.elementMarkup.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</div>
-        </code>
-      </pre>
-      `
   }
 
   handleDirectionSelect(value, name) {
@@ -153,35 +124,42 @@ class App extends Component {
 
     const element = document.querySelector('.Element');
 
+    const animation = {
+      duration: parseInt(this.state.speed, 10),
+      easing: this.state.acceleration,
+      iterations: 1,
+      fill: 'forwards',
+    }
+
+    const animationReverse = {
+
+      duration: parseInt(this.state.speed, 10),
+      easing: this.state.acceleration,
+      iterations: 1,
+      fill: 'forwards',
+      delay: (parseInt(this.state.speed, 10) + 1000).toString(),
+      direction: 'reverse',
+    }
+
     if (this.state.movementDirection === 'None') {
-      this.setState({
-        keyframes: keyframes.none
-      });
-      element.animate(keyframes.none, this.animation);
+      element.animate(keyframes.none, animation);
+      element.animate(keyframes.none, animationReverse);
     }
     if (this.state.movementDirection === 'Up') {
-      this.setState({
-        keyframes: keyframes.up
-      });
-      element.animate(keyframes.up, this.animation);
+      element.animate(keyframes.up, animation);
+      element.animate(keyframes.up, animationReverse);
     }
     if (this.state.movementDirection === 'Right') {
-      this.setState({
-        keyframes: keyframes.right
-      });
-      element.animate(keyframes.right, this.animation);
+      element.animate(keyframes.right, animation);
+      element.animate(keyframes.right, animationReverse);
     }
     if (this.state.movementDirection === 'Down') {
-      this.setState({
-        keyframes: keyframes.downm
-      });
-      element.animate(keyframes.down, this.animation);
+      element.animate(keyframes.down, animation);
+      element.animate(keyframes.down, animationReverse);
     }
     if (this.state.movementDirection === 'Left') {
-      this.setState({
-        keyframes: keyframes.left
-      });
-      element.animate(keyframes.left, this.animation);
+      element.animate(keyframes.left, animation);
+      element.animate(keyframes.left, animationReverse);
     }
   }
 
@@ -189,14 +167,23 @@ class App extends Component {
 
     document.addEventListener('keydown', this.handleEnter)
 
+    const elementStyle = {
+      transformOrigin: `${this.state.scalingOrigin}`,
+      width: this.state.scalingStartWidth + "px",
+      height: this.state.scalingStartHeight + "px",
+      opacity: this.state.opacityStart + "%",
+      backgroundColor: '#6256E9',
+      boxShadow: '0px 8px 10px rgba(19, 18, 30, 0.25), 0px 2px 5px rgba(19, 18, 30, 0.5), 0px 0px 1px rgba(19, 18, 30, 0.75)',
+      willChange: 'auto',
+    }
+
     return (
       <div className="App" >
-        <div className="modal"></div>
         <div className="Sidebar">
           <div className="logo">
             moveasquare <span aria-label="Moving trucky" role="img">🚚</span>
             <div>
-              Simple in-browser motion prototypes
+              Simple in-browser motion exploration
             </div>
           </div>
           <div className="SidebarSection">
@@ -293,18 +280,19 @@ class App extends Component {
               label="Speed"
               unit="ms"
               placeholder="150ms"
-              className="quarter"
+              className="full"
               name="speed"
               onInputChange={this.handleInput}
               defaultValue={this.state.speed}
             />
             <Select
-              className="three-quarter"
+              className="full"
               label="Easing"
               items={easings}
               name="acceleration"
               onInputChange={this.handleEasingSelect}
               defaultValue={this.state.acceleration}
+              sublabel={this.state.acceleration}
             />
           </div>
           <div className="SidebarSection">
@@ -316,9 +304,10 @@ class App extends Component {
           </div>
         </div>
         <div className="Pane">
-          <div style={this.elementStyle} className="Element"></div>
+          <div style={elementStyle} className="Element"></div>
         </div>
-        <div className="attribution">Made by @scottmled</div>
+        <div className="attribution">
+          <a href="https://twitter.com/scottmled" rel="noopener noreferrer" target="_blank">Made by @scottmled</a></div>
       </div>
     );
   }

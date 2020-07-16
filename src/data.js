@@ -15,7 +15,7 @@ export const origins = {
 }
 
 export const easings = {
-    "ease-in-quad": "cubic-bezier(.55, .085, .68, .53)",
+    "ease-in-quad ": "cubic-bezier(.55, .085, .68, .53)",
     "ease-in-cubic": "cubic-bezier(.550, .055, .675, .19)",
     "ease-in-quart": "cubic-bezier(.895, .03, .685, .22)",
     "ease-in-quint": "cubic-bezier(.755, .05, .855, .06)",
